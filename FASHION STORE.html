@@ -1,0 +1,548 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fashion Store - Your Style Destination</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+        }
+
+        header {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 2rem 0;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+        }
+
+        .header-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+            text-align: center;
+        }
+
+        h1 {
+            font-size: 3rem;
+            margin-bottom: 0.5rem;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+            animation: fadeInDown 1s ease-in-out;
+        }
+
+        .tagline {
+            font-size: 1.2rem;
+            font-style: italic;
+            opacity: 0.95;
+        }
+
+        nav {
+            background: rgba(255,255,255,0.95);
+            padding: 1rem 0;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        nav ul {
+            list-style: none;
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            max-width: 1200px;
+            margin: 0 auto;
+            flex-wrap: wrap;
+        }
+
+        nav a {
+            text-decoration: none;
+            color: #667eea;
+            font-weight: bold;
+            transition: color 0.3s;
+            font-size: 1.1rem;
+        }
+
+        nav a:hover {
+            color: #764ba2;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 2rem auto;
+            padding: 0 20px;
+        }
+
+        .benefits-section {
+            background: white;
+            padding: 3rem;
+            border-radius: 15px;
+            box-shadow: 0 8px 16px rgba(0,0,0,0.1);
+            margin-bottom: 3rem;
+            animation: fadeIn 1s ease-in-out;
+        }
+
+        .benefits-section h2 {
+            color: #667eea;
+            font-size: 2.5rem;
+            margin-bottom: 2rem;
+            text-align: center;
+            border-bottom: 3px solid #764ba2;
+            padding-bottom: 1rem;
+        }
+
+        .benefits-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+
+        .benefit-card {
+            padding: 2rem;
+            background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+            color: white;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+
+        .benefit-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 16px rgba(0,0,0,0.3);
+        }
+
+        .benefit-card h3 {
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .products-section {
+            background: white;
+            padding: 3rem;
+            border-radius: 15px;
+            box-shadow: 0 8px 16px rgba(0,0,0,0.1);
+            margin-bottom: 3rem;
+        }
+
+        .products-section h2 {
+            color: #667eea;
+            font-size: 2.5rem;
+            margin-bottom: 2rem;
+            text-align: center;
+            border-bottom: 3px solid #764ba2;
+            padding-bottom: 1rem;
+        }
+
+        .products-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+
+        .product-card {
+            border: 2px solid #e0e0e0;
+            border-radius: 10px;
+            overflow: hidden;
+            transition: transform 0.3s, box-shadow 0.3s;
+            background: white;
+        }
+
+        .product-card:hover {
+            transform: scale(1.05);
+            box-shadow: 0 8px 20px rgba(102, 126, 234, 0.3);
+        }
+
+        .product-image {
+            width: 100%;
+            height: 250px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 4rem;
+            color: white;
+        }
+
+        .product-info {
+            padding: 1.5rem;
+        }
+
+        .product-info h3 {
+            color: #333;
+            margin-bottom: 0.5rem;
+            font-size: 1.5rem;
+        }
+
+        .product-info p {
+            color: #666;
+            margin-bottom: 1rem;
+        }
+
+        .price {
+            font-size: 1.8rem;
+            color: #764ba2;
+            font-weight: bold;
+        }
+
+        .sale-section {
+            background: white;
+            padding: 3rem;
+            border-radius: 15px;
+            box-shadow: 0 8px 16px rgba(0,0,0,0.1);
+            margin-bottom: 3rem;
+        }
+
+        .sale-section h2 {
+            color: #f5576c;
+            font-size: 2.5rem;
+            margin-bottom: 2rem;
+            text-align: center;
+            border-bottom: 3px solid #f093fb;
+            padding-bottom: 1rem;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 2rem;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+        }
+
+        th {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 1.2rem;
+            text-align: left;
+            font-size: 1.1rem;
+        }
+
+        td {
+            padding: 1.2rem;
+            border-bottom: 1px solid #e0e0e0;
+        }
+
+        tr:nth-child(even) {
+            background: #f9f9f9;
+        }
+
+        tr:hover {
+            background: #f0f0ff;
+            transition: background 0.3s;
+        }
+
+        .discount-badge {
+            background: #f5576c;
+            color: white;
+            padding: 0.3rem 0.8rem;
+            border-radius: 20px;
+            font-weight: bold;
+            font-size: 1rem;
+        }
+
+        footer {
+            background: linear-gradient(135deg, #434343 0%, #000000 100%);
+            color: white;
+            padding: 3rem 0 1rem;
+            margin-top: 3rem;
+        }
+
+        .footer-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+        }
+
+        .footer-section h3 {
+            color: #f093fb;
+            margin-bottom: 1rem;
+            font-size: 1.5rem;
+        }
+
+        .footer-section ul {
+            list-style: none;
+        }
+
+        .footer-section ul li {
+            margin-bottom: 0.5rem;
+        }
+
+        .footer-section a {
+            color: #ccc;
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+
+        .footer-section a:hover {
+            color: #f093fb;
+        }
+
+        .copyright {
+            text-align: center;
+            margin-top: 2rem;
+            padding-top: 2rem;
+            border-top: 1px solid #555;
+            color: #999;
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes fadeInDown {
+            from {
+                opacity: 0;
+                transform: translateY(-20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @media (max-width: 768px) {
+            h1 {
+                font-size: 2rem;
+            }
+
+            .products-grid {
+                grid-template-columns: 1fr;
+            }
+
+            table {
+                font-size: 0.9rem;
+            }
+
+            th, td {
+                padding: 0.8rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="header-content">
+            <h1>Fashion Store</h1>
+            <p class="tagline">Your Ultimate Style Destination</p>
+        </div>
+    </header>
+
+    <nav>
+        <ul>
+            <li><a href="#products">Products</a></li>
+            <li><a href="#benefits">Why Shop With Us</a></li>
+            <li><a href="#sales">Sale Offers</a></li>
+            <li><a href="#contact">Contact</a></li>
+        </ul>
+    </nav>
+
+    <div class="container">
+        <section id="products" class="products-section">
+            <h2>Featured Fashion Items</h2>
+            <div class="products-grid">
+                <div class="product-card">
+                    <div class="product-image">👗</div>
+                    <div class="product-info">
+                        <h3>Summer Dress</h3>
+                        <p>Elegant floral print dress perfect for any summer occasion</p>
+                        <span class="price">$49.99</span>
+                    </div>
+                </div>
+
+                <div class="product-card">
+                    <div class="product-image">👔</div>
+                    <div class="product-info">
+                        <h3>Formal Blazer</h3>
+                        <p>Classic tailored blazer for professional style</p>
+                        <span class="price">$89.99</span>
+                    </div>
+                </div>
+
+                <div class="product-card">
+                    <div class="product-image">👟</div>
+                    <div class="product-info">
+                        <h3>Sports Sneakers</h3>
+                        <p>Comfortable athletic shoes for everyday wear</p>
+                        <span class="price">$69.99</span>
+                    </div>
+                </div>
+
+                <div class="product-card">
+                    <div class="product-image">👜</div>
+                    <div class="product-info">
+                        <h3>Designer Handbag</h3>
+                        <p>Luxurious leather handbag with spacious interior</p>
+                        <span class="price">$129.99</span>
+                    </div>
+                </div>
+
+                <div class="product-card">
+                    <div class="product-image">👖</div>
+                    <div class="product-info">
+                        <h3>Denim Jeans</h3>
+                        <p>Premium quality slim-fit jeans with perfect stretch</p>
+                        <span class="price">$59.99</span>
+                    </div>
+                </div>
+
+                <div class="product-card">
+                    <div class="product-image">🧥</div>
+                    <div class="product-info">
+                        <h3>Winter Coat</h3>
+                        <p>Warm and stylish coat for cold weather</p>
+                        <span class="price">$149.99</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="benefits" class="benefits-section">
+            <h2>Why Shop at Fashion Store?</h2>
+            <div class="benefits-grid">
+                <div class="benefit-card">
+                    <h3>🚚 Free Shipping</h3>
+                    <p>Enjoy free delivery on all orders over $50. We deliver straight to your doorstep within 3-5 business days.</p>
+                </div>
+
+                <div class="benefit-card">
+                    <h3>💎 Premium Quality</h3>
+                    <p>All our products are carefully curated from top brands, ensuring you get the best quality fashion items.</p>
+                </div>
+
+                <div class="benefit-card">
+                    <h3>↩️ Easy Returns</h3>
+                    <p>Not satisfied? Return any item within 30 days for a full refund. No questions asked, hassle-free process.</p>
+                </div>
+
+                <div class="benefit-card">
+                    <h3>💳 Secure Payment</h3>
+                    <p>Shop with confidence using our encrypted payment system. We accept all major credit cards and digital wallets.</p>
+                </div>
+
+                <div class="benefit-card">
+                    <h3>🎁 Loyalty Rewards</h3>
+                    <p>Earn points with every purchase and redeem them for exclusive discounts and special offers on future orders.</p>
+                </div>
+
+                <div class="benefit-card">
+                    <h3>💬 24/7 Support</h3>
+                    <p>Our dedicated customer service team is always available to assist you with any questions or concerns.</p>
+                </div>
+            </div>
+        </section>
+
+        <section id="sales" class="sale-section">
+            <h2>🔥 Upcoming Sale Offers</h2>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Item Category</th>
+                        <th>Discount</th>
+                        <th>Sale Period</th>
+                        <th>Description</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><strong>Women's Dresses</strong></td>
+                        <td><span class="discount-badge">30% OFF</span></td>
+                        <td>Oct 5-12, 2025</td>
+                        <td>All summer and spring dresses including maxi, midi, and mini styles</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Men's Formal Wear</strong></td>
+                        <td><span class="discount-badge">25% OFF</span></td>
+                        <td>Oct 8-15, 2025</td>
+                        <td>Suits, blazers, dress shirts, and formal trousers for business professionals</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Footwear</strong></td>
+                        <td><span class="discount-badge">40% OFF</span></td>
+                        <td>Oct 10-17, 2025</td>
+                        <td>Athletic shoes, casual sneakers, boots, and formal shoes from top brands</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Accessories</strong></td>
+                        <td><span class="discount-badge">50% OFF</span></td>
+                        <td>Oct 12-19, 2025</td>
+                        <td>Handbags, belts, scarves, jewelry, and watches - perfect for gifting</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Winter Collection</strong></td>
+                        <td><span class="discount-badge">35% OFF</span></td>
+                        <td>Oct 15-25, 2025</td>
+                        <td>Coats, jackets, sweaters, and warm clothing for the upcoming season</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Denim Special</strong></td>
+                        <td><span class="discount-badge">Buy 2 Get 1 Free</span></td>
+                        <td>Oct 18-31, 2025</td>
+                        <td>All denim products including jeans, jackets, skirts, and shorts</td>
+                    </tr>
+                </tbody>
+            </table>
+        </section>
+    </div>
+
+    <footer>
+        <div class="footer-content">
+            <div class="footer-section">
+                <h3>About Us</h3>
+                <p>Fashion Store is your premier destination for trendy and affordable fashion. We bring you the latest styles from around the world.</p>
+            </div>
+
+            <div class="footer-section">
+                <h3>Quick Links</h3>
+                <ul>
+                    <li><a href="#products">Shop Now</a></li>
+                    <li><a href="#benefits">Why Choose Us</a></li>
+                    <li><a href="#sales">Current Sales</a></li>
+                    <li><a href="#">Track Order</a></li>
+                </ul>
+            </div>
+
+            <div class="footer-section">
+                <h3>Customer Service</h3>
+                <ul>
+                    <li><a href="#">Contact Us</a></li>
+                    <li><a href="#">Shipping Info</a></li>
+                    <li><a href="#">Returns & Exchanges</a></li>
+                    <li><a href="#">Size Guide</a></li>
+                </ul>
+            </div>
+
+            <div class="footer-section" id="contact">
+                <h3>Contact Info</h3>
+                <p>Email: info@fashionstore.com</p>
+                <p>Phone: +254 700 123 456</p>
+                <p>Address: Nairobi, Kenya</p>
+            </div>
+        </div>
+
+        <div class="copyright">
+            <p>&copy; 2025 Fashion Store. All Rights Reserved.</p>
+            <p>Designed for CIS 221 Assignment | Nairobi, Kenya</p>
+        </div>
+    </footer>
+</body>
+</html>
